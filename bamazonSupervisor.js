@@ -19,7 +19,7 @@ connection.connect((err) => {
 });
 
 
-var comboQuer = "select departments.department_id, departments.department_name, departments.over_head_costs, sum(products.product_sales) as total_sales from products left join departments on products.department_name = departments.department_id group by products.department_name;"
+var comboQuer = "select departments.department_id, departments.department_name, departments.over_head_costs, sum(products.product_sales) as total_sales, (  sum(products.product_sales) - departments.over_head_costs ) total_profit from products left join departments on products.department_name = departments.department_id group by products.department_name;"
 
 function inquire() {
 	inquirer.prompt([
